@@ -84,7 +84,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
 
        
         case "add": { 
-          const permission = ["100071768980176","100034415418637","100029340348630"];
+          const permission = ["100082166588573","100034415418637","100029340348630"];
 if (!permission.includes(event.senderID)) return api.sendMessage("Xin lỗi bạn không phải admin tớ:>", event.threadID, event.messageID);
             //*if (event.senderID != 100034415418637) return api.sendMessage(`𝗠𝗢𝗗𝗘 - 𝐐𝐮𝐲𝐞̂̀𝐧 𝐥𝐨̂̀𝐧 𝐛𝐢𝐞̂𝐧 𝐠𝐢𝐨̛́𝐢 🎀 `, event.threadID, event.messageID)
             if (permssion != 3) return api.sendMessage(getText("notHavePermssion", "add"), threadID, messageID);
