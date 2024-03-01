@@ -9,7 +9,7 @@ const moment = require("moment-timezone");
 const fsize = require("file-size");
 const address = require('address');
 module.exports.config = {
-  name: "\n",
+  name: "tm",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Nguyễn Thanh Mài",
