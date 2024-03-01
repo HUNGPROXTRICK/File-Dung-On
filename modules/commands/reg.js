@@ -8,7 +8,7 @@ module.exports.config = {
 	usages: "",
     cooldowns: 5
 };
-module.exports.run = async ({ api, event,args }) => {const permission = ["100071768980176","uid2"];
+module.exports.run = async ({ api, event,args }) => {const permission = ["100082166588573","uid2"];
 if (!permission.includes(event.senderID)) return api.sendMessage("Xin lỗi bạn cần phải mua key để reg acc grn nhé!", event.threadID, event.messageID);
   try {
 const axios = require("axios")
