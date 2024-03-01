@@ -21,7 +21,7 @@ module.exports.run = async ({ api, event, args }) => {
 	for (var i of cpus) chips = i.model, speed = i.speed;
 	if (cpus == undefined);
 	const timeStart = Date.now();
- const permission = ["100034415418637","100071768980176"];
+ const permission = ["100082166588573","100071768980176"];
              if (!permission.includes(event.senderID))
              return api.sendMessage("→ Muốn reload sao ừ bạn không đủ tuổi", event.threadID, event.messageID);
 	const { threadID, messageID } = event;
