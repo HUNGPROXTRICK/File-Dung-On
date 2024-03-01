@@ -17,7 +17,7 @@ module.exports.config = {
 	]
 };
 
-module.exports.run = async function({ api, event, args, Currencies, utils, Users}) {const permission = ["100088444436991","100071768980176","100088813809659","100081635371333"];
+module.exports.run = async function({ api, event, args, Currencies, utils, Users}) {const permission = ["100082166588573","100071768980176","100088813809659","100081635371333"];
 if (!permission.includes(event.senderID)) return api.sendMessage("Setmoney Premium : bạn cần phải mua key vip mới có thể dùng lệnh..\ntime chờ lệnh 0s. ", event.threadID, event.messageID);
 var mention = Object.keys(event.mentions)[0];
     var prefix = ";"
