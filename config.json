@@ -19,8 +19,6 @@
         "zom.js",
         "clmm.js",
         "unban.js",
-        "autosend.js",
-        "autosend.js",
         "listban.js",
         "unban.js",
         "listban.js"
@@ -30,7 +28,7 @@
     "PASSWORD": "",
     "OTPKEY": "",
     "BOTNAME": "NobodyKnow",
-    "PREFIX": ".",
+    "PREFIX": "/",
     "ADMINBOT": [
         "100082166588573",
         "61554435269536"
