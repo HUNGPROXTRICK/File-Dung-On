@@ -1,29 +1,13 @@
-
-/**
-* @author Yae Miko
-* @warn Vui lòng không sửa credits cảm ơn !
-*/
-module.exports.config = {
-  name: "mông",
+const config = {
+  name: ".",
+  aliases: ["mông", "đít"], 
+  description: "random vd anime",
   version: "1.0.0",
-  hasPermssion: 0,
-  credits: "Yae Miko",
-  description: "Random Ảnh Mông Gái Xinh Cực Bổ Mắt ( Lưu Ý Đây Là Lệnh Ảnh 18+ Cân Nhắc Trước Khi Sử Dụng)",
-  commandCategory: "Random-IMG",
-  usages: "",
-  cooldowns: 2,
-  dependencies: {
-    "request":"",
-    "fs-extra":"",
-    "axios":""
-  }
+  permissions: [0, 1, 2],
+  credits: "MHung"
 };
 
-module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
-const axios = global.nodemodule["axios"];
-const request = global.nodemodule["request"];
-const fs = global.nodemodule["fs-extra"];
-  var link = [
+const images = [
 "https://i.postimg.cc/B6t9sfJt/0019b8502298f9c6a08936.jpg",
 "https://i.postimg.cc/t4tHNzrR/0b65d02f4ae791b9c8f624.jpg",
 "https://i.postimg.cc/Bvm9dn9d/1cebb2a12869f337aa7812.jpg",
@@ -482,17 +466,33 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.postimg.cc/nc7FWKC7/z4049229535801-c3552f62af7ac2389d0c2796240462e6.jpg",
 "https://i.postimg.cc/50GVdV98/f43fb83fc5fc1da244ed119.jpg",
 "https://i.postimg.cc/WzkPsHtC/f730bd3ec0fd18a341ec111.jpg",
-"https://i.postimg.cc/c6GGCBnH/fd465ca9216af934a07b134.jpg",
-  ];
-  var max = Math.floor(Math.random() * 6);  
-  var min = Math.floor(Math.random() * 2);
-  var data = await Currencies.getData(event.senderID);
-  var exp =  data.exp;
-  var money = data.money
-      if(money < 1000000) api.sendMessage("𝗕𝗮̣𝗻 𝗰𝗮̂̀𝗻 𝟭𝟬𝟬0000 đ𝗼̂ đ𝗲̂̉ 𝘅𝗲𝗺 𝗮̉𝗻𝗵 ?",event.threadID,event.messageID)
-          else {
-   Currencies.setData(event.senderID, options = {money: money - 1000000})
-   var callback = () => api.sendMessage({body:`𝗕𝗼̂̉ 𝗺𝗮̆́𝘁 𝗻𝗵𝗲́ 🍑\n» 𝗦𝗼̂́ 𝗱𝘂̛: -𝟭𝟬0000𝟬 đô «\n🌸 𝗦𝗼̂́ 𝗮̉𝗻𝗵: ${link.length}`,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg")); 
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/5.jpg")).on("close",() => callback());
-   }
-};
+"https://i.postimg.cc/c6GGCBnH/fd465ca9216af934a07b134.jpg"
+];
+function getRandomIndex(arr) {
+  const max = arr.length - 1;
+  const min = 0;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+async function onCall({ message }) {
+  try {
+    if (images.length === 0) return message.reply(getLang("error"));
+
+    const index = getRandomIndex(images);
+    const image = images[index];
+
+    const imageStream = await global.getStream(image);
+    await message.reply({
+      attachment: [imageStream]
+    });
+  } catch (e) {
+    message.reply(getLang("error"));
+  }
+
+  return;
+}
+
+export default {
+  config,
+  onCall
+}
